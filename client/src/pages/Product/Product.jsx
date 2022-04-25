@@ -6,33 +6,35 @@ import {PATH_HOST} from "../../utils/Paths";
 import MyButton from "../../UI/MyButton/MyButton";
 import UserStore from "../../store/UserStore";
 import OrderStore from "../../store/OrderStore";
+import OrderAPI from "../../API/OrderAPI";
 
 const Product = () => {
   const location = useLocation()
   const [dataProduct, setDataProduct] = useState({})
   const productId = location.pathname.split('/').reverse()[0]
   const [loading, setLoading] = useState(true)
-  const [isOrdered, setIsOrdered] = useState(OrderStore.orderedProducts.find((orderedProduct) => orderedProduct.id == productId))
+  const [isOrdered, setIsOrdered] = useState(false)
+  console.log('order', isOrdered)
 
   function addProductOrder() {
-
     if (OrderStore.orderedProducts.find((orderedProduct) => orderedProduct.id == productId)) {
-      console.log('dsadsadas')
-      OrderStore.setOrderedProducts(OrderStore.orderedProducts.filter((orderedProduct) => +orderedProduct.id !== +productId))
-      setIsOrdered(false)
+      OrderAPI.deleteProductFromOrder(dataProduct.product, OrderStore.currentOrder).then(data => {
+        OrderStore.setOrderedProducts(OrderStore.orderedProducts.filter((orderedProduct) => +orderedProduct.id !== +productId))
+        setIsOrdered(false)
+      })
     } else {
-      OrderStore.setOrderedProducts([...OrderStore.orderedProducts, {...dataProduct.product, product_count: 1}])
-      setIsOrdered(true)
-
-      console.log('sosi')
+      OrderAPI.addProductToOrder(dataProduct.product, OrderStore.currentOrder).then(data => {
+        OrderStore.setOrderedProducts([...OrderStore.orderedProducts, {...dataProduct.product, product_count: 1}])
+        setIsOrdered(true)
+      })
     }
-
   }
 
   useEffect(() => {
     ProductsAPI.getOne(productId).then(data => {
       console.log(data)
       setDataProduct(data)
+      setIsOrdered(OrderStore.orderedProducts?.find((orderedProduct) => +orderedProduct?.id === +productId))
     }).finally(() => {
       setLoading(false)
     })

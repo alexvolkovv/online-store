@@ -5,6 +5,7 @@ import MyInput from "../../../UI/MyInput/MyInput";
 import MyButton from "../../../UI/MyButton/MyButton";
 import OrderStore from "../../../store/OrderStore";
 import {observer} from "mobx-react-lite";
+import OrderAPI from "../../../API/OrderAPI";
 
 const OrderedProduct = observer((props) => {
   const {product} = props
@@ -28,7 +29,11 @@ const OrderedProduct = observer((props) => {
           <MyButton
             style={{marginTop: '10px', padding: '0'}}
             onClick={() => {
-              OrderStore.setOrderedProducts(OrderStore.orderedProducts.filter((orderedProduct) => product.id !== orderedProduct.id))
+              console.log(product.id)
+              console.log(OrderStore.currentOrder.id)
+              OrderAPI.deleteProductFromOrder(product, OrderStore.currentOrder).then(data => {
+                OrderStore.setOrderedProducts(OrderStore.orderedProducts.filter((orderedProduct) => product.id !== orderedProduct.id))
+              })
             }}
           >
             Удалить

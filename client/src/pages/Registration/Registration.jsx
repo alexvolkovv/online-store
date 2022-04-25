@@ -23,11 +23,7 @@ const Registration = () => {
       }
 
       UserStore.setUser(user)
-      OrderAPI.getOne(user.id).then(data => {
-        console.log(data)
-        OrderStore.setCurrentOrder(data.order)
-        OrderStore.setOrderedProducts(data.products)
-      })
+      OrderStore.fetchOrder(user)
       navigate(PATH_SHOP)
     })
   }

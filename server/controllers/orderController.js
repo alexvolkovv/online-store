@@ -33,6 +33,32 @@ class OrderController {
       console.log(e)
     }
   }
+
+  async addProductToOrder(req, res) {
+    try {
+      const {product, order} = req.body
+      const sql = `
+                    insert into ordered_product(order_id, product_id, product_count) 
+                    values (${order.id}, ${product.id}, ${product.product_count || 1});`
+      const response = await db.query(sql)
+
+      res.json(response.rows)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  async deleteProductFromOrder(req, res) {
+    try {
+      const {product, order} = req.body
+      const sql = `delete from ordered_product where product_id = ${product.id} and order_id = ${order.id};`
+      const response = await db.query(sql)
+
+      res.json(response.rows)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new OrderController()
