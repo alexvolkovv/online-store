@@ -59,6 +59,21 @@ class OrderController {
       console.log(e)
     }
   }
+
+  async changeProductCountInOrder(req, res) {
+    try {
+      const {product, order} = req.body
+      const sql = `
+          UPDATE ordered_product SET product_count = ${product.product_count}
+          where product_id = ${product.id} and order_id = ${order.id};
+      `
+      const response = await db.query(sql)
+
+      res.json(response.rows)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new OrderController()

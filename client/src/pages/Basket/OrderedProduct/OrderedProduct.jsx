@@ -16,6 +16,12 @@ const OrderedProduct = observer((props) => {
   const [productCount, setProductCount] = useState(product?.product_count)
   console.log(OrderStore.orderedProducts[0].product_count)
 
+  function changeProductCount() {
+    OrderAPI.changeProductCountInOrder(product, OrderStore.currentOrder).then(data => {
+      console.log(data)
+    })
+  }
+
 
   console.log(product.product_name)
   return (
@@ -53,6 +59,7 @@ const OrderedProduct = observer((props) => {
               console.log(product.max_count)
             }
           }}
+          onBlur={changeProductCount}
         />
       </div>
 

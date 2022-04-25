@@ -28,8 +28,11 @@ class OrderAPI {
     return response.data
   }
 
-  async changeProductFromOrder(product, order) {
-    const response = await axios.post(PATH_HOST + '/api/order/')
+  async changeProductCountInOrder(product, order) {
+    const response = await axios.patch(PATH_HOST + '/api/order/', {
+      product,
+      order
+    })
 
     return response.data
   }

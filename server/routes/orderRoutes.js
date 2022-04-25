@@ -6,6 +6,8 @@ router.get('/:id', orderController.getBasketOrder)
 router.get('/all/:id', orderController.getAllOrders)
 router.post('/', orderController.addProductToOrder)
 router.delete('/', orderController.deleteProductFromOrder)
+router.patch('/', orderController.changeProductCountInOrder)
+
 
 
 
