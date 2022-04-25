@@ -1,0 +1,26 @@
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    /*justify-content: center;*/
+    overflow: auto;
+    height: 60vh;
+}
+
+.products::-webkit-scrollbar {
+    width: 12px;               /* ширина scrollbar */
+    cursor: pointer;
+    border-radius: 20px;       /* закругления плашки */
+
+}
+.products::-webkit-scrollbar-track {
+    background: #fff;        /* цвет дорожки */
+    cursor: pointer;
+    border-radius: 20px;       /* закругления плашки */
+}
+.products::-webkit-scrollbar-thumb {
+    background-color: #ccc;    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 3px solid #ccc;  /* padding вокруг плашки */
+    cursor: pointer;
+}

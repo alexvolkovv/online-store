@@ -6,8 +6,9 @@ class BrandController {
       const {name} = req.body
       const sql = `insert into brand (brand_name) values('${name}') returning id;`
       const response = await db.query(sql)
+      const createdBrand = await db.query(`select * from brand where id = ${response.rows[0].id}`)
 
-      res.json(response.rows)
+      res.json(createdBrand.rows[0])
     } catch (e) {
       console.log(e)
     }

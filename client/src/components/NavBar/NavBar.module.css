@@ -1,0 +1,11 @@
+.navbar {
+    display: flex;
+    padding: 5px 40px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.buttons button {
+    margin-left: 6px;
+}

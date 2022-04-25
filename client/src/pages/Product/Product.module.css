@@ -1,0 +1,43 @@
+.product {
+    display: flex;
+    justify-content: center;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 60px;
+}
+
+.actions img {
+    width: 400px;
+    height: 250px;
+    object-fit: contain;
+
+}
+
+.about {
+
+}
+
+.price {
+    margin-bottom: 20px;
+
+}
+
+.info {
+    
+}
+
+.oneInfo {
+    padding: 10px 15px;
+    width: 100%;
+    background-color: #9d9d9d;
+
+}
+
+.oneInfo:nth-child(2n) {
+    background-color: #dedede;
+}
+

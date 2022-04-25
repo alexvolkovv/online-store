@@ -6,8 +6,8 @@ class CategoryController {
       const {name} = req.body
       const sql = `insert into category (category_name) values ('${name}') returning id;`
       const response = await db.query(sql)
-
-      res.json(response.rows)
+      const createdCategory = await db.query(`select * from category where id = ${response.rows[0].id}`)
+      res.json(createdCategory.rows[0])
     } catch (e) {
       console.log(e)
     }

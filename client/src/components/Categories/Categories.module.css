@@ -1,0 +1,40 @@
+.categories {
+    width: 15vw;
+    padding-right: 10px;
+    overflow: auto;
+    max-height: 50vh;
+    margin-bottom: 15px;
+}
+
+.categories::-webkit-scrollbar {
+    width: 12px;               /* ширина scrollbar */
+    cursor: pointer;
+    border-radius: 20px;       /* закругления плашки */
+
+}
+.categories::-webkit-scrollbar-track {
+    background: #fff;        /* цвет дорожки */
+    cursor: pointer;
+    border-radius: 20px;       /* закругления плашки */
+}
+.categories::-webkit-scrollbar-thumb {
+    background-color: #ccc;    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 3px solid #ccc;  /* padding вокруг плашки */
+    cursor: pointer;
+}
+
+.category {
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.category:hover {
+    border: 1px solid #ccc;
+}
+
+.category.active {
+    border: 1px solid black;
+}

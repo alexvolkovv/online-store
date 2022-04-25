@@ -1,0 +1,7 @@
+export const PATH_HOST = 'http://localhost:3001'
+export const PATH_REGISTRATION = '/registration'
+export const PATH_LOGIN = '/login'
+export const PATH_ADMIN = '/admin'
+export const PATH_BASKET = '/order'
+export const PATH_SHOP = '/'
+export const PATH_PRODUCT_PAGE = '/product'

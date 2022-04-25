@@ -1,0 +1,40 @@
+.brands {
+    display: flex;
+    align-items: center;
+    overflow: auto;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+}
+
+.brand {
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+.brands::-webkit-scrollbar {
+    cursor: pointer;
+    border-radius: 20px;
+    height: 10px;/* закругления плашки */
+
+}
+.brands::-webkit-scrollbar-track {
+    background: #fff;        /* цвет дорожки */
+    cursor: pointer;
+    border-radius: 20px;       /* закругления плашки */
+}
+.brands::-webkit-scrollbar-thumb {
+    background-color: #ccc;    /* цвет плашки */
+    border-radius: 20px;       /* закругления плашки */
+    border: 3px solid #ccc;  /* padding вокруг плашки */
+    cursor: pointer;
+}
+
+.brand:hover {
+    border: 1px solid #ccc;
+}
+
+.brand.active {
+    border: 1px solid black;
+}

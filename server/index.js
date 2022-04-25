@@ -7,7 +7,6 @@ const path = require('path')
 require('dotenv').config()
 const PORT = process.env.PORT || 3001
 const router = require('./routes/index')
-const errorHandler = require('./middleware/ErrorHandlingMiddleware')
 
 const app = express()
 
@@ -20,8 +19,6 @@ app.use(
 )
 app.use(fileUpload({}))
 app.use('/api', router)
-//Обработка ошибок - последний middleware
-app.use(errorHandler)
 
 const start = () => {
   app.listen(PORT, () => {
