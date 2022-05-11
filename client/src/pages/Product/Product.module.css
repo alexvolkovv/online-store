@@ -8,6 +8,7 @@
     flex-direction: column;
     align-items: center;
     margin-right: 60px;
+    flex-basis: 40%;
 }
 
 .actions img {
@@ -18,7 +19,7 @@
 }
 
 .about {
-
+    flex-basis: 60%;
 }
 
 .price {
@@ -33,11 +34,11 @@
 .oneInfo {
     padding: 10px 15px;
     width: 100%;
-    background-color: #9d9d9d;
+    background-color: #efeeee;
 
 }
 
 .oneInfo:nth-child(2n) {
-    background-color: #dedede;
+    background-color: #dedddd;
 }
 

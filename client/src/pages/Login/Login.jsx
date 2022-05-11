@@ -8,6 +8,7 @@ import UserAPI from "../../API/UserAPI";
 import UserStore from "../../store/UserStore";
 import OrderAPI from "../../API/OrderAPI";
 import OrderStore from "../../store/OrderStore";
+import {isLoginCorrect, isPasswordNull} from "../../utils/RegistrationFunctions";
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -52,6 +53,16 @@ const Login = () => {
           <MyButton type={'submit'}
             onClick={(e) => {
               e.preventDefault()
+
+              if (!isLoginCorrect(email)) {
+                alert('Проверьте правильность введенного логина')
+                return
+              }
+
+              if(isPasswordNull(password)) {
+                alert('Введите пароль')
+                return
+              }
               login()
             }
           }

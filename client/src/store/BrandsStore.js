@@ -1,8 +1,10 @@
 import {makeAutoObservable} from "mobx";
+import BrandsAPI from "../API/BrandsAPI";
 
 class BrandsStore {
   constructor() {
     this._brands = []
+    this._changingBrand = null
     makeAutoObservable(this)
   }
 
@@ -12,6 +14,20 @@ class BrandsStore {
 
   setBrands(brands) {
     this._brands = brands
+  }
+
+  get changingBrand() {
+    return this._changingBrand
+  }
+
+  setChangingBrand(brand) {
+    this._changingBrand = brand
+  }
+
+  fetchBrands() {
+    BrandsAPI.get().then(brands => {
+      this.setBrands(brands)
+    })
   }
 }
 

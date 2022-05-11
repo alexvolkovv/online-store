@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './MyInput.module.css'
+import {FormControl} from "react-bootstrap";
 
 const MyInput = ({...props}) => {
   return (
-    <input className={styles.input} {...props} />
+    <FormControl className={styles.input} {...props} />
   );
 };
 

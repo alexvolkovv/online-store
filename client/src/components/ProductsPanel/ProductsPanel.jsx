@@ -6,6 +6,7 @@ import Products from "./Products/Products";
 import ProductsStore from "../../store/ProductsStore";
 import ProductsAPI from "../../API/ProductsAPI";
 import {observer} from "mobx-react-lite";
+import Loader from "../Loader/Loader";
 
 const ProductsPanel = observer(() => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -16,13 +17,16 @@ const ProductsPanel = observer(() => {
   }, [ProductsStore.filter, ProductsStore.products]))
 
   useEffect(() => {
+
     setLoading(true)
-    console.log(ProductsStore.filter.category?.id)
+    console.log(JSON.stringify(ProductsStore.filter))
     ProductsAPI.get({
       category_id: ProductsStore.filter.category?.id,
-      brand_id: ProductsStore.filter.brand?.id
+      brand_id: ProductsStore.filter.brand?.id,
+      priceFrom: ProductsStore.filter?.priceFrom,
+      priceTo: ProductsStore.filter?.priceTo
     }).then(products => {
-      console.log(products)
+      console.log(JSON.stringify(products))
       ProductsStore.setProducts(products)
       ProductsStore.setSortedProducts(products)
     }).finally(() => {setLoading(false)})
@@ -43,7 +47,7 @@ const ProductsPanel = observer(() => {
         placeholder={'Поиск...'}
       />
       <Brands/>
-      {loading ? <h1>Загрузка...</h1> : <Products key={1}/>}
+      {loading ? <Loader style={{height: '50vh'}}/> : <Products/>}
     </div>
   );
 });

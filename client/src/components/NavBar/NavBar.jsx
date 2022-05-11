@@ -5,23 +5,28 @@ import MyButton from "../../UI/MyButton/MyButton";
 import {observer} from "mobx-react-lite";
 import UserStore from "../../store/UserStore";
 import userStore from "../../store/UserStore";
-import {PATH_BASKET} from "../../utils/Paths";
+import {PATH_ADMIN, PATH_ALL_ORDERS, PATH_BASKET} from "../../utils/Paths";
 import OrderStore from "../../store/OrderStore";
 
 const NavBar = observer(() => {
   const navigate = useNavigate()
+
   return (
     <div className={styles.navbar}>
       <Link to={'/'}><h1>Эльборабо</h1></Link>
       <div className={styles.buttons}>
         {UserStore.user ?
           <div className="hide">
-            {userStore.user?.role === 2 && <MyButton>Админ панель</MyButton>}
+            {UserStore.user.email}
+            {userStore.user?.role > 1 && <MyButton onClick={() => {navigate(PATH_ADMIN + '/' + 'orders')}}>Админ панель</MyButton>}
             <MyButton
               onClick={() => {
-              navigate(PATH_BASKET + '/' + UserStore.user.id)}
+              navigate(PATH_BASKET)}
               }>Корзина ({OrderStore.orderedProducts.length})</MyButton>
-            <MyButton>Заказы</MyButton>
+            <MyButton onClick={() => {
+              navigate(PATH_ALL_ORDERS + '/' + UserStore.user.id)
+            }
+            }>Заказы</MyButton>
             <MyButton onClick={() => {
               UserStore.setUser(null)
               navigate('/')

@@ -67,6 +67,38 @@ class ClientController {
       console.log(e)
     }
   }
+  async getAll(req, res) {
+    try {
+      const {id} = req.params
+      console.log('id',id)
+      const gettingUsers = await db.query(`
+            select client.id, email, role, cr.role_name 
+            from client 
+            join client_role cr ON client."role" = cr.id
+            where client.id != ${id}`)
+      const users = gettingUsers.rows
+      console.log(users)
+      res.json(users)
+    } catch (e) {
+
+    }
+  }
+
+  async changeRole(req, res) {
+    try {
+      const {id} = req.params
+      const {newRole} = req.body
+
+      const update = await db.query(`
+            update client
+            set role = ${newRole}
+            where id = ${id}`)
+
+      res.json(update.rows)
+    } catch (e) {
+
+    }
+  }
 }
 
 module.exports = new ClientController()

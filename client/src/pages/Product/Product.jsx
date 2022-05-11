@@ -16,6 +16,8 @@ const Product = () => {
   const [isOrdered, setIsOrdered] = useState(false)
   console.log('order', isOrdered)
 
+  console.log()
+
   function addProductOrder() {
     if (OrderStore.orderedProducts.find((orderedProduct) => orderedProduct.id == productId)) {
       OrderAPI.deleteProductFromOrder(dataProduct.product, OrderStore.currentOrder).then(data => {
@@ -23,6 +25,7 @@ const Product = () => {
         setIsOrdered(false)
       })
     } else {
+      console.log(Object.keys(OrderStore.currentOrder), Object.values(OrderStore.currentOrder))
       OrderAPI.addProductToOrder(dataProduct.product, OrderStore.currentOrder).then(data => {
         OrderStore.setOrderedProducts([...OrderStore.orderedProducts, {...dataProduct.product, product_count: 1}])
         setIsOrdered(true)
@@ -60,7 +63,7 @@ const Product = () => {
             }
           </div>
           <div className={styles.about}>
-            <h2>О товаре</h2>
+            <h1>О товаре</h1>
             <p>{dataProduct.product.description}</p>
             <p>Артикул: {dataProduct.product.article}</p>
             <h2>Характеристики</h2>

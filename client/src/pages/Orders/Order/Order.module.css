@@ -1,0 +1,21 @@
+.order {
+    margin-top: 15px;
+    display: flex;
+    transition: 0.2s all;
+    position: relative;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.order:hover {
+    background-color: #ececec;
+}
+
+.order div {
+    flex-basis: 25%;
+    padding: 15px;
+}
+
+.button {
+    position: absolute;
+}

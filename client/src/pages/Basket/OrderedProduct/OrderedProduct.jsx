@@ -22,7 +22,6 @@ const OrderedProduct = observer((props) => {
     })
   }
 
-
   console.log(product.product_name)
   return (
     <div className={styles.product}>
@@ -32,6 +31,7 @@ const OrderedProduct = observer((props) => {
         <div className={styles.text}>
           <div className={styles.name}>{product.product_name}</div>
           <div className={styles.price}>{product.price} Р</div>
+          <div>{product.max_count > 0 ? '' : 'Нет на складе'}</div>
           <MyButton
             style={{marginTop: '10px', padding: '0'}}
             onClick={() => {

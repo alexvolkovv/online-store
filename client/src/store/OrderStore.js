@@ -5,7 +5,9 @@ class OrderStore {
   constructor() {
     this._orderedProducts = []
     this._orders = []
+    this._sortedOrders = []
     this._currentOrder = {}
+    this._selectedOrders = null
     makeAutoObservable(this)
   }
 
@@ -38,6 +40,28 @@ class OrderStore {
       this.setCurrentOrder(data.order)
       this.setOrderedProducts(data.products)
     })
+  }
+
+  fetchAllOrders(userId) {
+     return OrderAPI.getAllOrders(userId).then(allOrders => {
+      this.setOrders(allOrders)
+    })
+  }
+
+  get sortedOrders() {
+    return this._sortedOrders
+  }
+
+  setSortedOrders(orders) {
+    this._sortedOrders = orders
+  }
+
+  get selectedOrders() {
+    return this._selectedOrders
+  }
+
+  setSelectedOrders(selectedOrders) {
+    this._selectedOrders = selectedOrders
   }
 }
 

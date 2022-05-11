@@ -1,0 +1,34 @@
+.table {
+    min-width: 70vw;
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    margin: 25px auto;
+}
+
+.row {
+    cursor: pointer;
+}
+
+.element {
+    padding: 20px 15px;
+    text-align: center;
+}
+
+.headElement {
+    padding: 20px 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.row:nth-child(2n) {
+    background-color: #ececec;
+}
+
+.row:hover {
+    background-color: #ccc;
+}
+
+.active {
+    background-color: #ccc;
+}

@@ -1,0 +1,27 @@
+.orders {
+    padding-bottom: 30px;
+}
+
+.header {
+    display: flex;
+}
+
+.header div {
+    cursor: pointer;
+    display: inline-block;
+    padding: 15px;
+    flex-basis: 25%;
+    font-weight: 700;
+    font-size: 21px;
+    transition: 0.2s all;
+}
+
+.header div:hover {
+    /*color: #5d5d5d;*/
+    background-color: #eae9e9;
+
+}
+
+.sorting {
+    background-color: #eae9e9;
+}

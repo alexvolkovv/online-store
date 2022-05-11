@@ -8,12 +8,18 @@ import UserAPI from "../../API/UserAPI";
 import UserStore from "../../store/UserStore";
 import OrderAPI from "../../API/OrderAPI";
 import OrderStore from "../../store/OrderStore";
+import {Form} from "react-bootstrap";
+import {isLoginCorrect, isPasswordNull} from "../../utils/RegistrationFunctions";
 
 const Registration = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [secondPassword, setSecondPassword] = useState('')
   const navigate = useNavigate()
+
+  function isPasswordsEqual() {
+    return password === secondPassword
+  }
 
   function registration() {
     UserAPI.registration(email, password).then((user) => {
@@ -30,7 +36,7 @@ const Registration = () => {
 
   return (
     <div className={styles.login}>
-      <form className={styles.form}>
+      <Form className={styles.form}>
         <h2 style={{textAlign: 'center'}}>Регистрация</h2>
         <MyInput
           type={'text'}
@@ -58,6 +64,22 @@ const Registration = () => {
             type={'submit'}
             onClick={(e) => {
               e.preventDefault()
+
+              if (!isLoginCorrect(email)) {
+                alert('Проверьте правильность введенного логина')
+                return
+              }
+
+              if (!isPasswordsEqual()) {
+                alert('Пароли не совпадают')
+                return
+              }
+
+              if(isPasswordNull(password)) {
+                alert('Введите пароль')
+                return
+              }
+
               registration()
             }}
           >
@@ -65,7 +87,7 @@ const Registration = () => {
           </MyButton>
         </div>
 
-      </form>
+      </Form>
     </div>
   );
 };

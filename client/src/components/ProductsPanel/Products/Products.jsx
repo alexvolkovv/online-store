@@ -12,7 +12,7 @@ const Products = observer(() => {
   return (
     <div className={styles.products}>
 
-      {!ProductsStore.sortedProducts?.length ? <h2>Продукты не найдены :(</h2> : ProductsStore.sortedProducts?.map(product => (
+      {!ProductsStore.sortedProducts?.length ? <h2>Товары не найдены</h2> : ProductsStore.sortedProducts?.map(product => (
         <ProductCard key={product.id} product={product} onClick={() => {
           navigate(PATH_PRODUCT_PAGE + '/' + product.id)
         }}/>

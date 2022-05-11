@@ -20,6 +20,20 @@ class UserAPI {
 
     return response.data
   }
+
+  async getAll(id) {
+    const response = await axios.get(PATH_HOST + '/api/client/' + id)
+
+    return response.data
+  }
+
+  async changeRole(id, newRole) {
+    const response = await axios.put(PATH_HOST + '/api/client/' + id, {
+      newRole
+    })
+
+    return response.data
+  }
 }
 
 export default new UserAPI()

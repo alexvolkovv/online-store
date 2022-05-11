@@ -1,0 +1,27 @@
+.links {
+    margin-right: 100px;
+    display: flex;
+    flex-direction: column;
+    /*max-height: 80vh;*/
+    padding-right: 10px;
+    /*overflow-y: auto;*/
+}
+
+.link {
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.link:hover {
+    background-color: #f1f0f0;
+}
+
+.link:not(:last-child) {
+    border-bottom: 1px solid transparent;
+}
+
+.link.active {
+    background-color: #f1f0f0;
+}
