@@ -10,7 +10,6 @@
 + **React** - JavaScript библиотека для создания пользовательских интерфейсов
 + **mobx** - управление состоянием приложения
 + **React-router** - необходим для маршрутизации в веб-приложениях
-+ **scss** - препроцессор для css, предназначенный для упрощения написания css кода
 
 ## База данных
 Физическая модель базы данных:
@@ -22,25 +21,24 @@
 ## Внешний вид
 ### Сортировка, поиск и фильтрация товаров:
 
-![Searching products](https://github.com/alexvolkovv/ReactToDoApp/blob/master/images/%D0%9E%D0%B1%D1%89%D0%B8%D0%B9%20%D0%B2%D0%B8%D0%B4.gif)
+![Searching products](https://github.com/alexvolkovv/online-store/blob/main/images/SearchingProducts.gif)
 
 ### Регистрация/авторизация:
 
-![Registration](https://github.com/alexvolkovv/ReactToDoApp/blob/master/images/AddingList.gif)
+![Registration](https://github.com/alexvolkovv/online-store/blob/main/images/Registration.gif)
+
 
 ### Оформление заказа:
 
-![Create order](https://github.com/alexvolkovv/ReactToDoApp/blob/master/images/RemovingList.gif)
+![Create order](https://github.com/alexvolkovv/online-store/blob/main/images/CreateOrder.gif)
 
 ### Отмена заказа:
-![Cancel order](https://github.com/alexvolkovv/ReactToDoApp/blob/master/images/AddingTask.gif)
+![Cancel order](https://github.com/alexvolkovv/online-store/blob/main/images/CancelOrder.gif)
 
 ### Админ-панель:
-![Admin panel](https://github.com/alexvolkovv/ReactToDoApp/blob/master/images/ChangingList.gif)
+![Admin panel](https://github.com/alexvolkovv/online-store/blob/main/images/AdminPanel.gif)
 
 ### Добавление товара
-![Adding product](https://github.com/alexvolkovv/ReactToDoApp/blob/master/images/ChangingList.gif)
+![Adding product](https://github.com/alexvolkovv/online-store/blob/main/images/AddingProduct.gif)
 
-### Формиование отчета
-![Creating report](https://github.com/alexvolkovv/ReactToDoApp/blob/master/images/ChangingList.gif)
 
