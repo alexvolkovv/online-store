@@ -12,10 +12,7 @@ const characteristicsRoutes = require('./characteristicsRoutes')
 const stockRoutes = require('./stockRoutes')
 const supplierRoutes = require('./supplierRoutes')
 const supplyRoutes = require('./supplyRoutes')
-
-
-
-
+const pdfRoutes = require('./pdfRoutes')
 
 router.use('/client', clientRoutes)
 router.use('/category', categoryRoutes)
@@ -28,10 +25,7 @@ router.use('/status', statusRoutes)
 router.use('/stock', stockRoutes)
 router.use('/supplier', supplierRoutes)
 router.use('/supply', supplyRoutes)
-
-
-
-
+router.use('/pdf', pdfRoutes)
 
 
 
