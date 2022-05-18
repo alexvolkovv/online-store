@@ -15,7 +15,7 @@
 ## База данных
 Физическая модель базы данных:
 
-![Physical model](https://github.com/alexvolkovv/ReactToDoApp/blob/master/server/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%91%D0%94.jpeg)
+![Physical model](https://github.com/alexvolkovv/online-store/blob/main/images/Physical%20model.jpeg)
 
 Скрипт для создания данной БД можно посмотреть [тут](https://github.com/alexvolkovv/ReactToDoApp/blob/master/server/DataBaseCreatingScript.sql)
 
