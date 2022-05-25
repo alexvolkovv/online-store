@@ -9,10 +9,12 @@ import ProductsStore from "./store/ProductsStore";
 import OrderStore from "./store/OrderStore";
 
 function App() {
+
   useEffect(() => {
     CategoriesStore.fetchCategories()
     BrandsStore.fetchBrands()
     ProductsStore.fetchProducts()
+
 
     const user = JSON.parse(localStorage.getItem('user'))
     if (user) {

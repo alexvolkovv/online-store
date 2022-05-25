@@ -7,8 +7,9 @@ class ProductsAPI {
     const categories = body?.category_id ? `category_id=${body?.category_id}` : ''
     const priceFrom = `priceFrom=${body.priceFrom || 0}`
     const priceTo = `priceTo=${body.priceTo || 100000000000000000000}`
+    const sort = `sort=${body?.selectedSort || ''}`
 
-    const response = await axios.get(PATH_HOST + `/api/product?${brands}&${categories}&${priceFrom}&${priceTo}`)
+    const response = await axios.get(PATH_HOST + `/api/product?${brands}&${categories}&${priceFrom}&${priceTo}&${sort}`)
     return response.data
   }
 

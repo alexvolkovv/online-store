@@ -7,7 +7,6 @@ import {Link, useNavigate} from "react-router-dom";
 import {PATH_PRODUCT_PAGE} from "../../../utils/Paths";
 
 const Products = observer(() => {
-  console.log(ProductsStore.sortedProducts)
   const navigate = useNavigate()
   return (
     <div className={styles.products}>

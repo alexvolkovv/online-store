@@ -35,11 +35,11 @@ class ProductController {
 
   async getAll(req, res) {
     try {
-      let {category_id, brand_id, priceFrom, priceTo} = req.query
+      let {category_id, brand_id, priceFrom, priceTo, sort} = req.query
       let priceFromNew = priceFrom || 0
       let priceToNew = priceTo || 100000000000000
+      sort = sort || 'price'
       let sql = ``
-      let sqlForCount
       if (!category_id && !brand_id) {
         sql = `
             select p.id, p.article, p.product_name, p.price, p.description, p.category_id, p.brand_id, p.image,
@@ -47,7 +47,8 @@ class ProductController {
             from product p
             left join product_stock ps on p.id=ps.product_id
             where price >= ${priceFromNew} and price <= ${priceToNew}
-            group by p.id;
+            group by p.id
+            order by ${sort};
         `
       }
       if (category_id && !brand_id) {
@@ -57,9 +58,10 @@ class ProductController {
             from product p
                      left join product_stock ps on p.id=ps.product_id
             where category_id=${category_id} and price >= ${priceFromNew} and price <= ${priceToNew}
-            group by p.id;
+            group by p.id
+            order by ${sort};
+
         `
-        sqlForCount = `select count(*) from product where category_id=${category_id}`
       }
       if (!category_id && brand_id) {
         sql = `
@@ -68,9 +70,9 @@ class ProductController {
             from product p
                      left join product_stock ps on p.id=ps.product_id
             where brand_id=${brand_id} and price >= ${priceFromNew} and price <= ${priceToNew}
-            group by p.id;
+            group by p.id
+            order by ${sort};
         `
-        sqlForCount = `select count(*) from product where brand_id=${brand_id}`
       }
       if (category_id && brand_id) {
         sql = `
@@ -79,13 +81,12 @@ class ProductController {
             from product p
                      left join product_stock ps on p.id=ps.product_id
             where brand_id=${brand_id} and category_id=${category_id} and price >= ${priceFromNew} and price <= ${priceToNew}
-            group by p.id;
+            group by p.id
+            order by ${sort};
         `
-        sqlForCount = `select count(*) from product where brand_id=${brand_id} and category_id=${category_id}`
       }
 
       const products = await db.query(sql)
-      // const count = await db.query(sqlForCount)
       res.json(products.rows)
     } catch (e) {
       console.log(e)
@@ -108,7 +109,6 @@ class ProductController {
                                                                                              join characteristic c on info_name = c.id
                            where product_id = ${id}`
       const dataProductInfo = await db.query(productInfo)
-      const productCount = await db.query(`select sum(product_count) from product_stock where product_id = ${id};`)
 
       res.json({product: data.rows[0], productInfo: dataProductInfo.rows})
     } catch (e) {

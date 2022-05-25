@@ -19,14 +19,13 @@ const ProductsPanel = observer(() => {
   useEffect(() => {
 
     setLoading(true)
-    console.log(JSON.stringify(ProductsStore.filter))
     ProductsAPI.get({
       category_id: ProductsStore.filter.category?.id,
       brand_id: ProductsStore.filter.brand?.id,
       priceFrom: ProductsStore.filter?.priceFrom,
-      priceTo: ProductsStore.filter?.priceTo
+      priceTo: ProductsStore.filter?.priceTo,
+      selectedSort: ProductsStore.filter?.selectedSort
     }).then(products => {
-      console.log(JSON.stringify(products))
       ProductsStore.setProducts(products)
       ProductsStore.setSortedProducts(products)
     }).finally(() => {setLoading(false)})

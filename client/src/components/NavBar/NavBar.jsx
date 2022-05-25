@@ -13,7 +13,7 @@ const NavBar = observer(() => {
 
   return (
     <div className={styles.navbar}>
-      <Link to={'/'}><h1>Эльборабо</h1></Link>
+      <Link to={'/'}><h1>volkoff-store</h1></Link>
       <div className={styles.buttons}>
         {UserStore.user ?
           <div className="hide">

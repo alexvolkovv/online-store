@@ -5,36 +5,28 @@ import {observer} from "mobx-react-lite";
 import {Dropdown, Form} from "react-bootstrap";
 import BrandsStore from "../../store/BrandsStore";
 import MyInput from "../../UI/MyInput/MyInput";
+import ProductsAPI from "../../API/ProductsAPI";
 
 const SortPanel = observer(() => {
   const [selectedSort, setSelectedSort] = useState('price')
 
-  ProductsStore.setSortedProducts(useMemo(() => {
-    switch (selectedSort) {
-      case 'product_name':
-        return [...ProductsStore.sortedProducts].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]))
-      case 'price':
-        return [...ProductsStore.sortedProducts].sort((a, b) => a[selectedSort] - b[selectedSort])
-    }
-
-    return ProductsStore.sortedProducts
-  }, [ProductsStore.filter, ProductsStore.products]))
-
-
   function sortProducts(sort) {
     setSelectedSort(sort)
-    ProductsStore.setFilter({...ProductsStore.filter, selectedSort: selectedSort})
+    ProductsStore.setFilter({...ProductsStore.filter, selectedSort: sort})
+    ProductsAPI.get(ProductsStore.filter).then(products => {
+      ProductsStore.setProducts(products)
+      ProductsStore.setSortedProducts(products)
+    })
   }
 
   return (
     <div>
       <h4>Сортировка</h4>
       <MySelect
-        defaultValue={'Сортировка'}
+        defaultValue={'Цена'}
         options={[
           {name: 'Название', value: 'product_name'},
           {name: 'Цена', value: 'price'}
-
         ]}
         value={selectedSort}
         onChange={sortProducts}
